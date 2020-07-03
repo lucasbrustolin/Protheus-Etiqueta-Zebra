@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<!-- saved from url=(0031)http://labelary.com/viewer.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+        
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="An online ZPL viewer that allows you to easily edit and preview ZPL labels.">
+        <title>Labelary Online ZPL Viewer</title>
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="./ZPL Viewer_files/font-awesome.css">
+
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="./ZPL Viewer_files/bootstrap.min.css">
+
+        <!-- Custom styling -->
+        <style type="text/css">
+            div.pull-left {
+                padding-right: 1em;
+            }
+        </style>
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script async="" src="./ZPL Viewer_files/analytics.js.download"></script><script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+            ga('create', 'UA-50317107-1', 'labelary.com');
+            ga('send', 'pageview');
+        </script>
+
+    </head>
+    <body>
+
+        <!-- Static navbar  - Alteracao Protheus - Remocao do menu superior pois esta pagina sera exibida dentro do SmartClient -->
+        <div class="navbar navbar-default navbar-static-top" role="navigation">
+            <div class="container">
+               <!--  <div class="navbar-header"> -->
+                <!--     <a class="navbar-brand" href="http://labelary.com/">Labelary</a> -->
+                <!-- </div> -->
+                <!-- <div class="navbar-collapse collapse"> -->
+                <!--     <ul class="nav navbar-nav"> -->
+                <!--         <li><a href="http://labelary.com/">Home</a></li> -->
+                <!--         <li class="active"><a href="http://labelary.com/viewer.html">Online Viewer</a></li> -->
+                <!--         <li><a href="http://labelary.com/service.html">Web Service</a></li> -->
+                <!--         <li><a href="http://labelary.com/docs.html">Documentation</a></li> -->
+                <!--         <li><a href="http://labelary.com/faq.html">FAQ</a></li> -->
+                <!--         <li><a href="mailto:support@labelary.com">Support</a></li> -->
+                <!--     </ul> -->
+               <!--  </div> -->
+            </div>
+        </div>
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="./ZPL Viewer_files/jquery-1.11.1.min.js.download"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="./ZPL Viewer_files/bootstrap.min.js.download"></script>
+
+        <div class="container">
+
+<style scoped="">
+    #zpl {
+        width: 100%;
+    }
+    #label {
+        max-width: 400px;
+        max-height: 600px;
+        border: 1px solid darkgray;
+    }
+    .controls {
+        margin-top: 1em;
+    }
+    .controls > * {
+        margin-bottom: 1em;
+    }
+    .controls > label,
+    .controls > select,
+    .controls > input,
+    .controls > span {
+        margin-right: 1em;
+    }
+    .controls label.aligned {
+        display: inline-block;
+        width: 7em;
+    }
+    .note {
+        font-style: italic;
+    }
+    input[type="number"] {
+        width: 5em;
+    }
+    input[type="file"] {
+        display: none;
+    }
+    #version {
+        margin-bottom: 1em;
+        margin-top: 1em;
+        text-align: center;
+        font-size: 8pt;
+        color: gray;
+    }
+</style>
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>Preview Etiqueta.</h2>
+		<h5>Atenção: Este visualizador só está disponivel para o modelo de impressão ZPL e exige conexão com Internet.</h5>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <form><input type=hidden name="CCODZPL" value="^XA
+^PR6
+^PQ1
+^FO80,48^BY4,2,80^BCN, 80,N,N,N,N^FD0002234562^FS
+^FO240,144^A3N,35^FH_^FDNF: 123456789 / 2^FS
+^FO80,208^BY4,2,80^BCN, 80,N,N,N,N^FD00000101^FS
+^FO200,320^A3N,35^FH_^FDFornecedor: 000001  01^FS
+^XZ
+">
+<input type=hidden name="WFMAILID" value="">
+<input type=hidden name="WFRECNOTIMEOUT" value="">
+<input type=hidden name="WFEMPRESA" value="">
+<input type=hidden name="WFFILIAL" value="">
+
+
+            <textarea id="zpl" cols="80" rows="25" spellcheck="false">^XA
+^PR6
+^PQ1
+^FO80,48^BY4,2,80^BCN, 80,N,N,N,N^FD0002234562^FS
+^FO240,144^A3N,35^FH_^FDNF: 123456789 / 2^FS
+^FO80,208^BY4,2,80^BCN, 80,N,N,N,N^FD00000101^FS
+^FO200,320^A3N,35^FH_^FDFornecedor: 000001  01^FS
+^XZ
+</textarea>
+		
+            <div class="controls">
+                <button type="button" class="btn btn-default" id="redraw"><i class="fa fa-pencil-square-o"></i> Redraw</button>
+                <button type="button" class="btn btn-default" id="addImage"><i class="fa fa-picture-o"></i> Add image</button>
+                <button type="button" class="btn btn-default" id="rotate"><i class="fa fa-rotate-right"></i> Rotate</button>
+                <a class="btn btn-default" id="permalink" href="http://labelary.com/viewer.html?density=8&amp;width=4&amp;height=6&amp;units=inches&amp;index=0&amp;zpl=%20%5EXA%0A%5EPR6%0A%5EPQ1%0A%5EFO80%2C40%5EA1N%2C30%5EFH_%5EFDCP123%5EFS%0A%5EFO360%2C40%5EA1N%2C30%5EFH_%5EFDTNO%20123.4%5EFS%0A%5EFO80%2C120%5EBY2%2C1%2C75%5EBCN%2C%2075%2CN%2CN%2CN%2CN%5EFD123456789012345%5EFS%0A%5EXZ"><i class="fa fa-link"></i> Permalink</a>
+                <button type="button" class="btn btn-default" id="openFile"><i class="fa fa-folder-open-o"></i> Open file</button>
+                <br>
+                <label for="density" class="aligned">Print Density:</label>
+                <select name="density" id="density">
+                    <option value="6">6 dpmm (152 dpi)</option>
+                    <option value="8" selected="">8 dpmm (203 dpi)</option>
+                    <option value="12">12 dpmm (300 dpi)</option>
+                    <option value="24">24 dpmm (600 dpi)</option>
+                </select>
+                <br>
+                <label for="width" class="aligned">Label Size:</label>
+                <input type="number" placeholder="width" min="1" step="any" required="required" name="width" id="width" value="4">
+                <span>x</span>
+                <input type="number" placeholder="height" min="1" step="any" required="required" name="height" id="height" value="6">
+                <select name="units" id="units">
+                    <option value="1" selected="">inches</option>
+                    <option value="0.393701">cm</option>
+                    <option value="0.0393701">mm</option>
+                </select>
+                <br>
+                <label for="index" class="aligned">Show Label:</label>
+                <input type="number" placeholder="index" min="0" max="0" step="1" required="required" name="index" id="index" value="0">
+                <span class="note">(0 = first label, 1 = second label, etc.)</span>
+                <br>
+                <label>Labels Available:</label>
+                <span id="total">1</span>
+                <input type="file" id="imageFile" accept="image/*">
+                <input type="file" id="zplFile">
+            </div>
+        </form>
+    </div>
+    <div class="col-md-6">
+        <img id="label" alt="Label" src="blob:http://labelary.com/905e568b-e532-4b86-8e4a-9f510b838351" style="display: block;">
+        <div id="error" style="display:none">undefined</div>
+        <div class="controls">
+            <button type="button" class="btn btn-default" id="downloadZpl"><i class="fa fa-cloud-download"></i> ZPL</button>
+            <button type="button" class="btn btn-default" id="downloadPng"><i class="fa fa-cloud-download"></i> PNG</button>
+            <button type="button" class="btn btn-default" id="downloadPdf"><i class="fa fa-cloud-download"></i> PDF</button>
+            <button type="button" class="btn btn-default" id="downloadPdfAll"><i class="fa fa-cloud-download"></i> Multi-Label PDF</button>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12" id="version">Powered by Labelary API version 2.0.0-cf9e5539</div>
+</div>
+
+<script>
+
+    const ERROR_DOWN_FOR_MAINTENANCE = "ERROR: Temporarily down for maintenance";
+
+    function refreshVersion() {
+        $.ajax({
+            url: 'http://api.labelary.com/version',
+            success: function(data) {
+                $('#version').text('Powered by Labelary API version ' + data);
+            }
+        });
+    }
+
+    function rotateLabel() {
+        setRotation(getRotation() + 90);
+    }
+
+    function setRotation(rotation, duration) {
+
+        if (duration == null) {
+            duration = 0.5;
+        }
+
+        var label = document.getElementById('label');
+        var maxWidth = (rotation % 180 == 0 ? 400 : 600);
+        var maxHeight = (rotation % 180 == 0 ? 600 : 400);
+
+        var x, y;
+        if (rotation % 360 == 90) {
+            x = '0';
+            y = '-100%';
+        } else if (rotation % 360 == 180) {
+            x = '100%';
+            y = '-100%';
+        } else if (rotation % 360 == 270) {
+            // this is the only case where the translation coordinates are based on the new image size computed
+            // by the browser (based on the image max width and max height), rather than the old image size; note
+            // also that the use of naturalWidth and naturalHeight requires that the image has already been
+            // loaded before this method is called, or these two attributes will not be available
+            var widthFactor = maxWidth / label.naturalWidth;
+            var heightFactor = maxHeight / label.naturalHeight;
+            var factor = Math.min(widthFactor, heightFactor);
+            x = (label.naturalHeight * factor) + 'px';
+            y = ((label.naturalWidth - label.naturalHeight) * factor) + 'px';
+        } else {
+            x = '0';
+            y = '0';
+        }
+
+        label.style.transition = duration + 's ease-in-out';
+        label.style.transformOrigin = 'left bottom';
+        label.style.transform = 'translateX(' + x + ') translateY(' + y + ') rotate(' + rotation + 'deg)';
+        label.style.maxWidth = maxWidth + 'px';
+        label.style.maxHeight = maxHeight + 'px';
+    }
+
+    function getRotation() {
+        var label = document.getElementById('label');
+        var transform = label.style.transform || 'rotate(0deg)';
+        var matches = transform.match(/rotate\((\d+)\.?\d*deg\)/); // ignore decimals that IE inexplicably adds sometimes...
+        return (matches && matches.length == 2 ? parseInt(matches[1]) : 0);
+    }
+
+    function refreshLabel() {
+        submitLabelRequest(false, false, function(xhr) {
+            if (xhr.readyState == 4) {
+                var totalCountHeader = xhr.getResponseHeader('X-Total-Count'); // received with all 200s and with some 404s
+                if (xhr.status == 200) {
+                    var label = document.getElementById('label');
+                    var wurl = window.URL || window.webkitURL;
+                    wurl.revokeObjectURL(label.src);
+                    label.src = wurl.createObjectURL(xhr.response);
+                    labelDone(totalCountHeader);
+                } else if (xhr.status >= 400 && xhr.status <= 599) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        labelDone(totalCountHeader, reader.result);
+                    };
+                    reader.readAsText(xhr.response);
+                } else if (xhr.status == 0) {
+                    // if the Labelary API server is down, the API gateway that sits in front of it will return a valid HTTP
+                    // error code, e.g. 404; however, the API gateway isn't configured for CORS, which means that the HTTP
+                    // error response comes back without the requisite "Access-Control-Allow-Origin" header, in which case
+                    // from the perspective of this code we see a response with readyState = 4 but status = 0...
+                    // http://broadcast.oreilly.com/2010/04/ajax-readystate-is-4-but-statu.html
+                    // https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/status
+                    labelDone(0, ERROR_DOWN_FOR_MAINTENANCE);
+                }
+            }
+        });
+    }
+
+    function submitLabelRequest(pdf, all, orsc) {
+
+        var zpl = $('#zpl').val();
+        var uzpl = zpl.toUpperCase();
+        if (uzpl.indexOf('^XA') == -1 && uzpl.indexOf('\x02') == -1) {
+            // no need to even hit the server to get the 404 error...
+            labelDone('0', 'ERROR: The ZPL is missing a starting ^XA command.');
+            return;
+        } else if (uzpl.indexOf('^XZ') == -1 && uzpl.indexOf('\x03') == -1) {
+            // no need to even hit the server to get the 404 error...
+            labelDone('0', 'ERROR: The ZPL is missing an ending ^XZ command.');
+            return;
+        }
+
+        var density = $('#density').val();
+        var width = $('#width').val() * $('#units').val();
+        var height = $('#height').val() * $('#units').val();
+        var index = $('#index').val();
+        var baseUrl = 'http://api.labelary.com/v1/printers/' + density + 'dpmm/labels/' + width + 'x' + height + '/';
+        if (!pdf || !all) {
+            baseUrl += index + '/';
+        }
+
+        // use a POST request so that the ZPL is never truncated, regardless of length
+        // http://www.html5rocks.com/en/tutorials/file/xhr2/
+        // http://www.henryalgus.com/reading-binary-files-using-jquery-ajax/
+        var formData = new FormData();
+        formData.append('file', zpl);
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() { orsc(this) };
+        xhr.open('POST', baseUrl);
+        xhr.setRequestHeader('Accept', pdf ? 'application/pdf' : 'image/png');
+        xhr.responseType = 'blob';
+        xhr.send(formData);
+    }
+
+    function labelDone(totalCountHeader, errorMessage) {
+        var error = document.getElementById('error');
+        var label = document.getElementById('label');
+        error.innerHTML = errorMessage;
+        error.style.display = (errorMessage ? 'block' : 'none');
+        label.style.display = (errorMessage ? 'none' : 'block');
+        if (!errorMessage) {
+            var rotation = getRotation();
+            if (rotation % 360 == 270) {
+                // refresh the label CSS transform (necessary if rotation = 270 and label dimensions have changed)
+                // duration = 0 because the user didn't explicitly rotate the label, so we don't want to animate it
+                setRotation(rotation, 0);
+            }
+        }
+        var index = document.getElementById('index');
+        var total = document.getElementById('total');
+        index.max = Math.max((totalCountHeader ? parseInt(totalCountHeader) - 1 : 0), 0);
+        total.innerHTML = totalCountHeader;
+    }
+
+    function refreshPermalink() {
+        var density = $('#density').val();
+        var width = $('#width').val();
+        var height = $('#height').val();
+        var units = $('#units option:selected').text();
+        var index = $('#index').val();
+        var zpl = encodeURIComponent($('#zpl').val());
+        $('#permalink').attr('href', '?density=' + density +
+                                     '&width=' + width +
+                                     '&height=' + height +
+                                     '&units=' + units +
+                                     '&index=' + index +
+                                     '&zpl=' + zpl);
+    }
+
+    function setSelectionRange(input, selectionStart, selectionEnd) {
+        if (input.setSelectionRange) {
+            input.focus();
+            input.setSelectionRange(selectionStart, selectionEnd);
+        } else if (input.createTextRange) {
+            var range = input.createTextRange();
+            range.collapse(true);
+            range.moveEnd('character', selectionEnd);
+            range.moveStart('character', selectionStart);
+            range.select();
+        }
+    }
+
+    // http://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript
+    function getParameterByName(name) {
+        name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+        var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+        var results = regex.exec(location.search);
+        return results == null ? null : decodeURIComponent(results[1].replace(/\+/g, ' '));
+    }
+
+    // http://stackoverflow.com/questions/166221/how-can-i-upload-files-asynchronously-with-jquery
+    function uploadImage() {
+        var formData = new FormData();
+        formData.append('file', $('#imageFile')[0].files[0]);
+        $.ajax({
+            url: 'http://api.labelary.com/v1/graphics',
+            headers: { Accept: 'application/json' },
+            type: 'POST',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function(data) {
+                var zpl = $('#zpl').val();
+                var index = zpl.toUpperCase().indexOf('^XA');
+                var cmd =
+                      '\n'
+                    + '\n'
+                    + '^FO50,50^GFA,' + data.totalBytes + ',' + data.totalBytes + ',' + data.rowBytes + ',' + data.data + '^FS\n'
+                    + '\n'
+                    + '\n';
+                if (index == -1) {
+                    zpl = cmd + zpl;
+                } else {
+                    zpl = zpl.substring(0, index + 3) + cmd + zpl.substring(index + 3);
+                }
+                $('#zpl').val(zpl);
+                refreshLabel();
+                refreshPermalink();
+            },
+            error: function(jqxhr) {
+                alert(jqxhr.responseText);
+            }
+        });
+    }
+
+    function loadZpl() {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            $('#zpl').val(reader.result);
+            refreshLabel();
+            refreshPermalink();
+        };
+        var file = $('#zplFile')[0].files[0];
+        reader.readAsText(file);
+    }
+
+    function downloadZpl() {
+        var zpl = document.getElementById('zpl');
+        var wurl = window.URL || window.webkitURL;
+        var blob = new Blob([ zpl.value ], { type: 'application/zpl' });
+        var url = wurl.createObjectURL(blob);
+        triggerDownload(url, 'label.zpl');
+        wurl.revokeObjectURL(url);
+    }
+
+    function downloadPng() {
+        var label = document.getElementById('label');
+        if (label && label.src) {
+            triggerDownload(label.src, 'label.png');
+        }
+    }
+
+    function downloadPdf() {
+        downloadPdfPlease(false);
+    }
+
+    function downloadPdfAll() {
+        downloadPdfPlease(true);
+    }
+
+    function downloadPdfPlease(all) {
+        submitLabelRequest(true, all, function(xhr) {
+            if (xhr.readyState == 4) {
+                if (xhr.status == 200) {
+                    var wurl = window.URL || window.webkitURL;
+                    var url = wurl.createObjectURL(xhr.response);
+                    var filename = all ? 'labels.pdf' : 'label.pdf';
+                    triggerDownload(url, filename);
+                    wurl.revokeObjectURL(url);
+                } else if (xhr.status >= 400 && xhr.status <= 599) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        showDownloadError(reader.result);
+                    };
+                    reader.readAsText(xhr.response);
+                } else if (xhr.status == 0) {
+                    // see note in refreshLabel() for details on when this might happen
+                    showDownloadError(ERROR_DOWN_FOR_MAINTENANCE);
+                }
+            }
+        });
+    }
+
+    function showDownloadError(errorMessage) {
+        if (errorMessage) {
+            alert(errorMessage);
+        }
+    }
+
+    function triggerDownload(url, filename) {
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        a.style = 'display: none';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    }
+
+    function track(event) {
+        ga('send', 'event', 'Viewer', event.data.action);
+    }
+
+    // http://stackoverflow.com/questions/572768/styling-an-input-type-file-button
+    $('#addImage'      ).on('click', function() { $('#imageFile').click(); });
+    $('#openFile'      ).on('click', function() { $('#zplFile').click();   });
+    $('#imageFile'     ).on('change', uploadImage).on('change', { action: 'Add Image' }, track);
+    $('#zplFile'       ).on('change', loadZpl    ).on('change', { action: 'Open File' }, track);
+    $('#zpl'           ).on('change keyup paste', refreshPermalink);
+    $('#rotate'        ).on('click',  rotateLabel ).on('click', { action: 'Rotate' }, track);
+    $('#redraw'        ).on('click',  refreshLabel).on('click', { action: 'Redraw' }, track);
+    $('#density'       ).on('change', refreshLabel).on('change', refreshPermalink).on('change', { action: 'Change Density' }, track);
+    $('#width'         ).on('change', refreshLabel).on('change', refreshPermalink).on('change', { action: 'Change Width'   }, track);
+    $('#height'        ).on('change', refreshLabel).on('change', refreshPermalink).on('change', { action: 'Change Height'  }, track);
+    $('#units'         ).on('change', refreshLabel).on('change', refreshPermalink).on('change', { action: 'Change Units'   }, track);
+    $('#index'         ).on('change', refreshLabel).on('change', refreshPermalink).on('change', { action: 'Change Index'   }, track);
+    $('#downloadZpl'   ).on('click', downloadZpl    ).on('click', { action: 'Download ZPL' }, track);
+    $('#downloadPng'   ).on('click', downloadPng    ).on('click', { action: 'Download PNG' }, track);
+    $('#downloadPdf'   ).on('click', downloadPdf    ).on('click', { action: 'Download PDF' }, track);
+    $('#downloadPdfAll').on('click', downloadPdfAll ).on('click', { action: 'Download PDF All' }, track);
+
+    $(document).ready(function() {
+
+        var zpl = getParameterByName('zpl');
+        if (zpl) {
+            // custom ZPL requested via query string
+            $('#zpl').val(zpl);
+        } else {
+            // select recipient name in standard sample ZPL, if it's there
+            var name = 'John Doe';
+            var input = document.getElementById('zpl');
+            var index = input.value.indexOf(name);
+            if (index >= 0) {
+                setSelectionRange(input, index, index + name.length);
+            }
+        }
+
+        var density = getParameterByName('density');
+        if (density) {
+            // custom print density requested via query string
+            $('#density').val(density);
+        }
+
+        var width = getParameterByName('width');
+        if (width) {
+            // custom width requested via query string
+            $('#width').val(width);
+        }
+
+        var height = getParameterByName('height');
+        if (height) {
+            // custom height requested via query string
+            $('#height').val(height);
+        }
+
+        var units = getParameterByName('units');
+        if (units) {
+            // custom label size units requested via query string
+            $('#units option').filter(function () { return $(this).html() == units; }).prop('selected', true);
+        }
+
+        var index = getParameterByName('index');
+        if (index) {
+            // custom label index requested via query string
+            $('#index').val(index);
+        }
+
+        refreshLabel();
+        refreshPermalink();
+        refreshVersion();
+    });
+
+</script>
+        </div>
+
+    
+
+</body></html>
