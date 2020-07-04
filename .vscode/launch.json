@@ -11,5 +11,13 @@
 			"isMultiSession": true,
 			"enableTableSync": true
 		}
-	]
+	],
+	"lastPrograms": [
+		{
+			"args": [],
+			"label": "apsdu",
+			"description": ""
+		}
+	],
+	"lastProgramExecuted": "apsdu"
 }
