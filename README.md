@@ -2,7 +2,7 @@
 Configurador de etiquetas zebra Protheus
 
 * Copie o diretório ./resource/zebra para dentro do seu RootPath.
-* Appendar os arquivos SX2, SX3, SIX e SX5 em DBF/CTREE ( ./resource/zebra/dbf/ ou   /resource/zebra/ctree)
+* Appendar os arquivos SX2, SX3, SIX, SXB e SX5 em DBF/CTREE ( ./resource/zebra/dbf/ ou   /resource/zebra/ctree)
 
 ![zebracfg.png](./resource/zebracfg.png)
 
