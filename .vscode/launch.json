@@ -17,7 +17,37 @@
 			"args": [],
 			"label": "apsdu",
 			"description": ""
+		},
+		{
+			"args": [],
+			"label": "sigaesp",
+			"description": ""
+		},
+		{
+			"args": [],
+			"label": "sigacom",
+			"description": ""
+		},
+		{
+			"args": [],
+			"label": "sigaest",
+			"description": ""
+		},
+		{
+			"args": [],
+			"label": "U_expordic",
+			"description": ""
+		},
+		{
+			"args": [],
+			"label": "sigaesp1",
+			"description": ""
+		},
+		{
+			"args": [],
+			"label": "sigacfg",
+			"description": ""
 		}
 	],
-	"lastProgramExecuted": "apsdu"
+	"lastProgramExecuted": "sigaesp"
 }
