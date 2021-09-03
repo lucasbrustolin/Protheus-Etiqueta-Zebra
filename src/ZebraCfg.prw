@@ -1482,7 +1482,7 @@ If GetRpoRelease() > "12.1.017"
 
     __oWebPage := TWebEngine():New(oPanel, 0, 0, 100, 100,, nPort)
     __oWebPage:bLoadFinished := {|self,__URLPage| conout("Termino da carga do pagina: " + __URLPage) }
-    __oWebPage:navigate(cUrl)
+    __oWebPage:navigate(__URLPage)
     __oWebPage:Align := CONTROL_ALIGN_ALLCLIENT
 Else 
     __oWebPage := TIBrowser():New(00,400,180,100, "" ,oPanel)
