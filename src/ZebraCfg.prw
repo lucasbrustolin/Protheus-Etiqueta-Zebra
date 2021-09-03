@@ -1471,11 +1471,24 @@ CPYS2T(cHTMLSrv, cPathLoc)
 
 oPanel:Align:= CONTROL_ALIGN_ALLCLIENT
 
-__oWebPage := TIBrowser():New(00,400,180,100, "" ,oPanel)
 
-__oWebPage:Align:= CONTROL_ALIGN_ALLCLIENT
+// ------------------------------------------
+// Cria navegador embedado
+// ------------------------------------------
+If GetRpoRelease() > "12.1.017"
 
-__oWebPage:GoHome()
+    PRIVATE oWebChannel := TWebChannel():New()
+    nPort := oWebChannel::connect()
+
+    __oWebPage := TWebEngine():New(oPanel, 0, 0, 100, 100,, nPort)
+    __oWebPage:bLoadFinished := {|self,__URLPage| conout("Termino da carga do pagina: " + __URLPage) }
+    __oWebPage:navigate(cUrl)
+    __oWebPage:Align := CONTROL_ALIGN_ALLCLIENT
+Else 
+    __oWebPage := TIBrowser():New(00,400,180,100, "" ,oPanel)
+    __oWebPage:Align:= CONTROL_ALIGN_ALLCLIENT
+    __oWebPage:GoHome()
+EndIf 
 
 Return()
 
